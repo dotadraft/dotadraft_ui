@@ -20,6 +20,7 @@ Helps you to pick skills in Dota 2 Ability Draft while drafting
 - Use at own risk
 - There will be bugs
 - Dota 2 is a registered trademark of Valve Corporation
+- Contributions and JS hints are welcome
 
 ## Funding
 
