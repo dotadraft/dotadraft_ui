@@ -54,12 +54,13 @@
     "win": {
       "icon": "assets/icon_512.png",
       "target": [
-        "nsis"
+        "nsis",
+        "zip"
       ]
     },
     "linux": {
       "target": [
-        "zip",
+        "tar.gz",
         "AppImage"
       ],
       "category": "Development"
