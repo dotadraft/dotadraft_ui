@@ -6,7 +6,7 @@ Helps you to pick skills in Dota 2 Ability Draft
 
 ## How to use
 
-1. Download latest release for your OS
+1. [Download latest release for your OS](https://github.com/dotadraft/dotadraft_ui/releases)
 2. Install or unpack release
 3. Run dotadraft
 4. Configure Dota 2 folder in settings
