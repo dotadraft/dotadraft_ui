@@ -19,3 +19,4 @@ Helps you to pick skills in Dota 2 Ability Draft
 - Read about in Dotadraft application
 - Use at own risk
 - There will be bugs
+- Dota 2 is a registered trademark of Valve Corporation
