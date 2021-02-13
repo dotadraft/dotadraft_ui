@@ -1,0 +1,66 @@
+html, body {
+  height: 100%
+}
+
+
+$brown: #88715f;
+$blue: #007bff;
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #e83e8c;
+$red: #fb3921;
+$orange: #fd7e14;
+$yellow: #f89406;
+$green: #62c462;
+$teal: #20c997;
+$cyan: #5bc0de;
+$white: #fff;
+$gray: #36393f;
+$gray-dark: #2f3136;
+$primary: #007bff;
+$secondary: #7a8288;
+$success: #62c462;
+$info: #5bc0de;
+$warning: #f89406;
+$danger: #ee5f5b;
+$light: #fbfbfb;
+$dark: $gray;
+$dark-nav: #202225;
+
+$link-color: $light;
+$link-hover-color: $red;
+
+.bg-dark-nav {
+  background-color: $dark-nav;
+}
+
+.bg-gray-dark {
+  background-color: $gray-dark;
+}
+
+.bg-gray {
+  background-color: $gray;
+}
+
+.tabulator.table-dark {
+  background-color: $gray;
+}
+
+.nav-link {
+  &:hover
+  &:active {
+    background-color: $gray-dark;
+    color: $light;
+  }
+
+  color: $light;
+}
+
+.btn {
+  padding: 20px;
+  display: inline-block;
+}
+
+@import "./node_modules/bootstrap/scss/bootstrap";
+@import "./node_modules/react-tabulator/lib/styles";
+@import "./node_modules/react-tabulator/css/bootstrap/tabulator_bootstrap4";
