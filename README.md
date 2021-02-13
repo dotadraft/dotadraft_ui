@@ -1,6 +1,6 @@
 # Dotadraft
 
-Helps you to pick skills in Dota 2 Ability Draft
+Helps you to pick skills in Dota 2 Ability Draft while drafting
 
 ![dotadraft screenshot](https://raw.githubusercontent.com/dotadraft/dotadraft_ui/master/images/screenshot.png "Dotadraft")
 
