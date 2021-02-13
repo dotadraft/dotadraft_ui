@@ -20,3 +20,9 @@ Helps you to pick skills in Dota 2 Ability Draft
 - Use at own risk
 - There will be bugs
 - Dota 2 is a registered trademark of Valve Corporation
+
+## Funding
+
+- I am funding this project on my own (server and hosting costs)
+- To keep everything free, donations need to cover the bills
+- [Donate](https://www.paypal.com/donate?hosted_button_id=DM426FKQMXSRA)
