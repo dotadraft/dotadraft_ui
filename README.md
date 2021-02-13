@@ -26,3 +26,10 @@ Helps you to pick skills in Dota 2 Ability Draft
 - I am funding this project on my own (server and hosting costs)
 - To keep everything free, donations need to cover the bills
 - [Donate](https://www.paypal.com/donate?hosted_button_id=DM426FKQMXSRA)
+
+## Build
+
+- npm install
+- npm run make:win (windows)
+- npm run make:linux (linux)
+- npm run make:mac (mac - not tested)
