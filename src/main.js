@@ -28,7 +28,7 @@ function createMainWindow() {
         minWidth: 800,
         minHeight: 600,
         icon: path.join(__dirname, "..", "assets", "icon_512.png"),
-        skipTaskbar: true,
+        skipTaskbar: false,
         webPreferences: {
             nodeIntegration: false,
             worldSafeExecuteJavaScript: true,
@@ -37,7 +37,7 @@ function createMainWindow() {
         }
     })
 
-    //win.setMenuBarVisibility(false)
+    win.setMenuBarVisibility(false)
 
     win.loadFile(path.join(__dirname, "window", "index.html"))
 
