@@ -37,7 +37,7 @@ function createMainWindow() {
         }
     })
 
-    win.setMenuBarVisibility(false)
+    //win.setMenuBarVisibility(false)
 
     win.loadFile(path.join(__dirname, "window", "index.html"))
 
