@@ -6,6 +6,7 @@ Helps you to pick skills in Dota 2 Ability Draft while drafting
 - Show, filter and sort all skills and heroes by stats 
 
 ![dotadraft screenshot](https://raw.githubusercontent.com/dotadraft/dotadraft_ui/master/images/screenshot.png "Dotadraft")
+[How it works](https://www.youtube.com/watch?v=hCMO2ZYyIDU)
 
 ## How to use
 
