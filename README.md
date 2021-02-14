@@ -20,8 +20,9 @@ Helps you to pick skills in Dota 2 Ability Draft while drafting
 3. Run dotadraft
 4. Configure Dota 2 folder in settings for game state updates
 5. Play Dota 2 Ability Draft
-6. Press refresh skill (default F5) hotkey while drafting to show analysis (takes max 30 seconds)
-7. Profit
+6. Press refresh skill hotkey (default F5) while drafting to show analysis (takes max 30 seconds)
+7. Press focus hotkey (default F6) to hide and show the window
+8. Profit
 
 ## Disclaimer
 
