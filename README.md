@@ -2,9 +2,9 @@
 
 Helps you to pick skills in Dota 2 Ability Draft while drafting
 
-**Supported Dota 2 video modes: Borderless window of Desktop-friendly Fullscreen (Exclusive Fullscreen does not work)**
+**Exclusive Fullscreen and DX9 might cause issues**
 
-**There might be some issue with Dota running in DX9 - Use DX11, Vulkan or OpenGL instead**
+**If you encounter issues switch to DX11, Vulkan or OpenGL and use Borderless window or Desktop-friendly Fullscreen mode**
 
 [How it works](https://www.youtube.com/watch?v=hCMO2ZYyIDU)
 
