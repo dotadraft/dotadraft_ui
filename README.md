@@ -2,6 +2,8 @@
 
 Helps you to pick skills in Dota 2 Ability Draft while drafting
 
+Supported Dota 2 video modes: DX11, Vulkan and OpenGL (DX9 is currently not working)
+
 [How it works](https://www.youtube.com/watch?v=hCMO2ZYyIDU)
 
 - Show, filter and sort draftable skills by stats while drafting
