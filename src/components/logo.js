@@ -7,7 +7,7 @@ export default function Logo() {
         <>
             <GlobalContext.Consumer>
                 {ctx => (
-                    <div className="align-self-center m-3">
+                    <div className={ctx.context.minimized ? "m-3" : "m-3 align-self-center"}>
                         <img src={`../../assets/${ctx.context.minimized ? "icon_16.png" : "icon_64.png"}`}/>
                     </div>
                 )}

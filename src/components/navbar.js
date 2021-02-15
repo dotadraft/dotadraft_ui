@@ -11,23 +11,19 @@ export default function NavBar() {
         <>
             <div className="flex-shrink-0 d-flex flex-column">
                 <Logo/>
+                <NavLink text="Draft" link="/" icon="bar-chart-fill"/>
+                <NavLink text="Skills" link="/skills" icon="pie-chart-fill"/>
+                <NavLink text="Heroes" link="/heroes" icon="people-fill"/>
+                <NavLink text="Settings" link="/settings" icon="tools"/>
+                <NavLink text="About" link="/about" icon="patch-question-fill"/>
 
-                <ul className="nav d-flex flex-column">
-                    <NavLink text="Draft" link="/" icon="bar-chart-fill"/>
-                    <NavLink text="Skills" link="/skills" icon="pie-chart-fill"/>
-                    <NavLink text="Heroes" link="/heroes" icon="people-fill"/>
-                    <NavLink text="Settings" link="/settings" icon="tools"/>
-                    <NavLink text="About" link="/about" icon="patch-question-fill"/>
+                <NavHref text="Donate" link="https://www.paypal.com/donate?hosted_button_id=DM426FKQMXSRA" icon="cash" target="_blank"/>
 
-                    <NavHref text="Donate" link="https://www.paypal.com/donate?hosted_button_id=DM426FKQMXSRA" icon="cash" target="_blank"/>
-                </ul>
-                <div className="flex-grow-1"></div>
+                <div className="flex-grow-1"> </div>
 
-                <ul className="nav d-flex flex-column">
-                    <PinHref/>
-                    <MinimizeHref/>
-                    <Status/>
-                </ul>
+                <PinHref/>
+                <MinimizeHref/>
+                <Status/>
             </div>
         </>
     )
