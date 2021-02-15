@@ -8,7 +8,7 @@ const loadData = async (settings) => {
 
     const startTime = Date.now();
 
-    data = {}
+    const data = {}
 
     const loading = Promise.all([
         axios.get(settings.url_public_bucket + "/stats_heroes.json").then(res => data.stats_heroes = res.data),
