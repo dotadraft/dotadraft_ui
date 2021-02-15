@@ -8,7 +8,13 @@
     "url": "https://github.com/dotadraft"
   },
   "homepage": "https://github.com/dotadraft",
-  "license": "MIT",
+  "license": "Apache-2.0",
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
   "main": "src/main.js",
   "scripts": {
     "start": "electron .",
