@@ -19,7 +19,7 @@ export default function About() {
             </GlobalContext.Consumer>
             <ContentBox header="Contacts">
                 <AboutHref text="Need help? Join Discord!" link="https://discord.gg/ZNPM4AV2gh" icon="discord" target="_blank"/>
-                <AboutHref text="Report issues or request features" link="https://github.com/dotadraft" icon="bug" target="_blank"/>
+                <AboutHref text="Report issues or request features" link="https://github.com/dotadraft/dotadraft_ui/issues" icon="bug" target="_blank"/>
                 <AboutHref text="https://www.dotadraft.com" link="https://www.dotadraft.com" icon="house" target="_blank"/>
                 <AboutHref text="https://github.com/dotadraft" link="https://github.com/dotadraft" icon="github" target="_blank"/>
                 <AboutHref text="mail@dotadraft.com" link="mailto:mail@dotadraft.com" icon="envelope" target="_blank"/>
