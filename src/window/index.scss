@@ -47,10 +47,10 @@ $link-hover-color: $red;
 }
 
 .nav-link {
-  &:hover
+  &:hover,
   &:active {
     background-color: $gray-dark;
-    color: $light;
+    color: red;
   }
 
   color: $light;
