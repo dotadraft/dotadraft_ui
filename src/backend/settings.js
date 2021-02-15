@@ -17,7 +17,7 @@ const defaultSettings = {
     dotadraft_api_server: "https://api.dotadraft.com",
     dota_game_state_server_port: "9990",
     url_public_bucket: "https://s3.eu-central-1.amazonaws.com/com.dotadraft.public",
-    prewarm_interval: 120_000
+    prewarm_interval: 240_000
 }
 
 

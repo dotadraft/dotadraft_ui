@@ -7,16 +7,17 @@ class Dotadraft {
 
     constructor(server) {
         this.server = server
-        this.presignedTimeout = 30000
-        this.uploadTimeout = 30000
-        this.analyseTimeout = 30000
+        this.presignedTimeout = 40000
+        this.uploadTimeout = 40000
+        this.analyseTimeout = 40000
     }
 
-    async uploadScreenshot(screenshot) {
+    async uploadScreenshot(screenshot, version) {
         const url = `${this.server}/upload`
         const config = {timeout: this.presignedTimeout}
+        const data = {version: version}
 
-        return axios.get(url, config)
+        return axios.post(url, data, config)
             .then(res => {
                 log.info(`presigned post retrieved`)
 
@@ -50,7 +51,6 @@ class Dotadraft {
         log.info("prewarming")
 
         const url = `${this.server}/analyse`
-        const config = {timeout: this.analyseTimeout}
 
         const startTime = Date.now();
 
@@ -65,9 +65,9 @@ class Dotadraft {
             })
     }
 
-    async analyseScreenshot(filename, teamRadiant) {
+    async analyseScreenshot(filename, teamRadiant, version) {
         const url = `${this.server}/analyse`
-        const data = {filename: filename, team_radiant: teamRadiant}
+        const data = {filename: filename, team_radiant: teamRadiant, version: version}
         const config = {timeout: this.analyseTimeout}
 
         return axios.post(url, data, config)

@@ -2,10 +2,21 @@ import React from 'react';
 
 import AboutHref from '../components/abouthref';
 import ContentBox from '../components/contentbox';
+import GlobalContext from "../context/globalContext";
 
 export default function About() {
     return (
         <>
+            <GlobalContext.Consumer>
+                {ctx => (
+                    <ContentBox header="Version">
+                        <ul>
+                            <li>Current Version {ctx.context.data.current_version}</li>
+                            <li>Latest Version {ctx.context.data.latest_version}</li>
+                        </ul>
+                    </ContentBox>
+                )}
+            </GlobalContext.Consumer>
             <ContentBox header="Contacts">
                 <AboutHref text="Report issues or request features" link="https://github.com/dotadraft" icon="bug" target="_blank"/>
                 <AboutHref text="https://www.dotadraft.com" link="https://www.dotadraft.com" icon="house" target="_blank"/>

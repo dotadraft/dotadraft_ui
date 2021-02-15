@@ -1,4 +1,4 @@
-const {app, BrowserWindow, ipcMain, globalShortcut, dialog} = require("electron")
+const {app, BrowserWindow, ipcMain, globalShortcut, dialog, Tray, Menu} = require("electron")
 const fs = require('fs')
 const path = require("path")
 const {GameStateServer} = require('./backend/gamestate');
@@ -10,6 +10,14 @@ const {loadData} = require('./backend/data');
 
 const log = require('./backend/logger').getLogger()
 
+
+const appLock = app.requestSingleInstanceLock()
+
+if (!appLock) {
+    dialog.showErrorBox("Launch Error", "Dotadraft already running")
+    app.quit()
+}
+
 const settings = loadSettings()
 
 const dotadraftApi = new Dotadraft(settings.dotadraft_api_server)
@@ -20,6 +28,7 @@ setInterval(() => dotadraftApi.prewarm(), settings.prewarm_interval);
 let win
 let data
 let gameStateServer
+let tray
 
 function createMainWindow() {
     win = new BrowserWindow({
@@ -28,7 +37,7 @@ function createMainWindow() {
         minWidth: 800,
         minHeight: 600,
         icon: path.join(__dirname, "..", "assets", "icon_512.png"),
-        skipTaskbar: false,
+        skipTaskbar: true,
         webPreferences: {
             nodeIntegration: false,
             worldSafeExecuteJavaScript: true,
@@ -44,7 +53,35 @@ function createMainWindow() {
     if (isDev) {
         win.webContents.toggleDevTools()
     }
+
+    tray = new Tray(path.join(__dirname, "..", "assets", "icon_64.png"));
+
+    const contextMenu = Menu.buildFromTemplate([
+        {
+            label: 'Show',
+            click() {
+                win.show()
+                win.focus()
+            }
+        },
+        {
+            label: 'Hide',
+            click() {
+                win.hide()
+            }
+        },
+        {
+            label: 'Exit',
+            click() {
+                app.quit()
+            }
+        }
+    ])
+
+    tray.setToolTip('Dotadraft')
+    tray.setContextMenu(contextMenu)
 }
+
 
 app.on('ready', async () => {
     data = await loadData(settings)
@@ -56,11 +93,19 @@ app.on('ready', async () => {
         require('electron').shell.openExternal(url);
     });
 
+    if (data.current_version != data.latest_version) {
+        dialog.showMessageBox(win, {
+            title: `New Version`,
+            message: `New Version ${data.latest_version} available on GitHub`
+        })
+    }
+
     globalShortcut.register(settings.hotkey_focus_toggle, () => {
         if (win.isVisible()) {
             win.hide();
         } else {
             win.show();
+            win.focus()
         }
     })
 
@@ -77,6 +122,17 @@ if (isDev) {
     })
 }
 
+app.on('second-instance', (event, commandLine, workingDirectory) => {
+    if (win) {
+        if (win.isMinimized()) {
+            win.restore()
+        }
+
+        win.show();
+        win.focus()
+    }
+})
+
 app.on("window-all-closed", () => {
     if (process.platform !== "darwin") {
         app.quit()
@@ -90,10 +146,9 @@ app.on("activate", () => {
 })
 
 ipcMain.on('analyseDraft', async (event, screenshot) => {
-    dotadraftApi.uploadScreenshot(screenshot)
-        .then(filename => dotadraftApi.analyseScreenshot(filename, gameStateServer.gameState.playerTeam === "radiant"))
+    dotadraftApi.uploadScreenshot(screenshot, data.current_version)
+        .then(filename => dotadraftApi.analyseScreenshot(filename, gameStateServer.gameState.playerTeam === "radiant", data.current_version))
         .then((res) => {
-            console.log(res)
             event.reply("analyseDraftResult", res)
         })
         .catch(error => {
@@ -177,7 +232,7 @@ ipcMain.on('install', async (event) => {
 
             fs.writeFileSync(dstPath, template);
 
-            dialog.showMessageBox({
+            dialog.showMessageBox(win, {
                 title: `Success`,
                 message: `Delete ${dstPath} to uninstall`
             })

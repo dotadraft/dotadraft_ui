@@ -44,20 +44,20 @@ class Settings extends React.Component {
                         <Form onSubmit={this.handleSubmit} onReset={this.handleReset}>
                             <Form.Row>
                                 <Col>
-                                    <Form.Group controlId="formHotkeyFocus">
-                                        <Form.Label>Focus Toggle Hotkey</Form.Label>
-                                        <Form.Control name="hotkey_focus_toggle" type="text" defaultValue={ctx.context.settings.hotkey_focus_toggle}/>
-                                        <Form.Text className="text-muted">
-                                            Hotkey toggles window focus
-                                        </Form.Text>
-                                    </Form.Group>
-                                </Col>
-                                <Col>
                                     <Form.Group controlId="formHotkeyRefresh">
                                         <Form.Label>Draft Refresh Hotkey</Form.Label>
                                         <Form.Control name="hotkey_draft_refresh" type="text" defaultValue={ctx.context.settings.hotkey_draft_refresh}/>
                                         <Form.Text className="text-muted">
                                             Hotkey refreshes draft view
+                                        </Form.Text>
+                                    </Form.Group>
+                                </Col>
+                                <Col>
+                                    <Form.Group controlId="formHotkeyFocus">
+                                        <Form.Label>Focus Toggle Hotkey</Form.Label>
+                                        <Form.Control name="hotkey_focus_toggle" type="text" defaultValue={ctx.context.settings.hotkey_focus_toggle}/>
+                                        <Form.Text className="text-muted">
+                                            Hotkey toggles window focus
                                         </Form.Text>
                                     </Form.Group>
                                 </Col>
