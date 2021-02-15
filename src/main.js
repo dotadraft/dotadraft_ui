@@ -80,6 +80,11 @@ function createMainWindow() {
 
     tray.setToolTip('Dotadraft')
     tray.setContextMenu(contextMenu)
+    tray.setIgnoreDoubleClickEvents(true)
+    tray.on('click', () => {
+        win.show()
+        win.focus()
+    });
 }
 
 
