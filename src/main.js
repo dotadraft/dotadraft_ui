@@ -98,7 +98,7 @@ app.on('ready', async () => {
         require('electron').shell.openExternal(url);
     });
 
-    if (data.current_version != data.latest_version) {
+    if (data.current_version !== data.latest_version) {
         dialog.showMessageBox(win, {
             title: `New Version`,
             message: `New Version ${data.latest_version} available on GitHub`

@@ -29,7 +29,7 @@ class App extends React.Component {
         }
 
         dotadraftApi.registerCallbackRefreshSkills(() => {
-            if (this.state.status != "Loading") {
+            if (this.state.status !== "Loading") {
                 this.setState({
                     ...this.state,
                     status: "Loading"

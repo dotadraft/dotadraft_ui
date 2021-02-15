@@ -36,7 +36,7 @@ class GameStateServer {
 
         if (gameState === "DOTA_GAMERULES_STATE_HERO_SELECTION") {
             if (this.gameState) {
-                if (this.gameState.matchId != matchId) {
+                if (this.gameState.matchId !== matchId) {
                     this.stopGame(this.gameState)
 
                     this.gameState = new GameState(gameState, matchId, playerName, playerTeam, heroName)
@@ -51,7 +51,6 @@ class GameStateServer {
                 this.stopGame(this.gameState)
             }
 
-            this.prewarmed = false
             this.gameState = null
         }
 
