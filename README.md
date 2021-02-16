@@ -2,14 +2,16 @@
 
 Helps you to pick skills in Dota 2 Ability Draft while drafting
 
-**Exclusive Fullscreen and DX9 might cause issues**
-
-**If you encounter issues switch to DX11, Vulkan or OpenGL and use Borderless window or Desktop-friendly Fullscreen mode**
-
 [How it works](https://www.youtube.com/watch?v=hCMO2ZYyIDU)
 
 - Show, filter and sort draftable skills by stats while drafting
 - Show, filter and sort all skills and heroes by stats 
+
+**Exclusive Fullscreen and DX9 might cause issues**
+
+**If you encounter issues switch to DX11, Vulkan or OpenGL and use Borderless window or Desktop-friendly Fullscreen mode**
+
+Need help? Join [Discord](https://discord.gg/ZNPM4AV2gh)
 
 ![dotadraft screenshot](https://raw.githubusercontent.com/dotadraft/dotadraft_ui/master/images/screenshot.png "Dotadraft")
 
