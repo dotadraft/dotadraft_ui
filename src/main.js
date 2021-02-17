@@ -19,6 +19,7 @@ if (!appLock) {
 }
 
 const settings = loadSettings()
+let dataPromise = loadData(settings)
 
 const dotadraftApi = new Dotadraft(settings.dotadraft_api_server)
 dotadraftApi.prewarm()
@@ -30,12 +31,31 @@ let data
 let gameStateServer
 let tray
 
+function createSplashWindow() {
+    const splash = new BrowserWindow({
+        width: 300,
+        height: 150,
+        backgroundColor: '#202225',
+        frame: false,
+        transparent: true,
+        webPreferences: {
+            nodeIntegration: false,
+            worldSafeExecuteJavaScript: true,
+            contextIsolation: true,
+        }
+    })
+
+    splash.loadFile(path.join(__dirname, "window", "splash.html"))
+    return splash;
+}
+
 function createMainWindow() {
     win = new BrowserWindow({
         width: 800,
         height: 600,
         minWidth: 800,
         minHeight: 600,
+        show: false,
         icon: path.join(__dirname, "..", "assets", "icon_512.png"),
         skipTaskbar: true,
         webPreferences: {
@@ -89,35 +109,47 @@ function createMainWindow() {
 
 
 app.on('ready', async () => {
-    data = await loadData(settings)
+    const splash = createSplashWindow()
+
+    dataPromise.then(result => data = result)
+        .catch(e => {
+            log.error("Error loading data", "Check internet connection")
+            app.quit()
+        })
 
     createMainWindow()
+    win.once('ready-to-show', () => {
+        setTimeout(() => {
+            splash.destroy();
+            win.show()
 
-    win.webContents.on('new-window', function (e, url) {
-        e.preventDefault();
-        require('electron').shell.openExternal(url);
-    });
+            win.webContents.on('new-window', function (e, url) {
+                e.preventDefault();
+                require('electron').shell.openExternal(url);
+            });
 
-    if (data.current_version !== data.latest_version) {
-        dialog.showMessageBox(win, {
-            title: `New Version`,
-            message: `New Version ${data.latest_version} available on GitHub`
-        })
-    }
+            if (data.current_version !== data.latest_version) {
+                dialog.showMessageBox(win, {
+                    title: `New Version`,
+                    message: `New Version ${data.latest_version} available on GitHub`
+                })
+            }
 
-    globalShortcut.register(settings.hotkey_focus_toggle, () => {
-        if (win.isVisible()) {
-            win.hide();
-        } else {
-            win.show();
-            win.focus()
-        }
-    })
+            globalShortcut.register(settings.hotkey_focus_toggle, () => {
+                if (win.isVisible()) {
+                    win.hide();
+                } else {
+                    win.show();
+                    win.focus()
+                }
+            })
 
-    globalShortcut.register(settings.hotkey_draft_refresh, () => {
-        if (gameStateServer.gameState) {
-            win.webContents.send("refreshSkills");
-        }
+            globalShortcut.register(settings.hotkey_draft_refresh, () => {
+                if (gameStateServer.gameState) {
+                    win.webContents.send("refreshSkills");
+                }
+            })
+        }, 3000)
     })
 })
 
