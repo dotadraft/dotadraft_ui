@@ -3,7 +3,7 @@
 Helps you to pick skills in Dota 2 Ability Draft while drafting
 
 - Displays skill stats of current draft
-- Shows win rate advantage for picking the next skill (AI predicted)
+- Shows win rate advantage for picking the next skill (based on the heroes and picked skills - AI predicted)
 - Filter and sort draftable skills by stats while drafting
 - Show, filter and sort all skills and heroes by stats 
 
