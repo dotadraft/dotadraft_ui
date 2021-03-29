@@ -5,15 +5,26 @@ import {ReactTabulator} from "react-tabulator";
 class Draft extends React.Component {
     constructor(props) {
         super(props);
-
-
     }
 
     headerFilterEmptyCheck(value) {
         return !value;
     }
 
-    columns(data) {
+    columns(draft, data) {
+        let min_adv = -1
+        let max_adv = 1
+
+        if (draft) {
+            const list_adv = []
+            for (const [key, s] of Object.entries(draft.abilities)) {
+                list_adv.push(Number(s.win_rate_advantage).toFixed(2))
+            }
+
+            min_adv = Math.min.apply(null, list_adv) - 0.01
+            max_adv = Math.max.apply(null, list_adv) + 0.01
+        }
+
         const stats = data.stats_skills
 
         return [
@@ -48,6 +59,27 @@ class Draft extends React.Component {
                 headerFilterFunc: ">="
             },
             {
+                title: "Advantage",
+                field: "win_rate_advantage",
+                hozAlign: "left",
+                widthGrow: 1,
+                formatter: "progress",
+                formatterParams: {
+                    color: ["red", "orange", "yellow", "yellowgreen", "green"],
+                    min: min_adv,
+                    max: max_adv
+                }
+            },
+            {
+                title: "%",
+                field: "win_rate_advantage",
+                headerSort: false,
+                widthGrow: 0.5,
+                headerFilter: "input",
+                headerFilterPlaceholder: "Min Adv",
+                headerFilterFunc: ">="
+            },
+            {
                 title: "K/D",
                 field: "kd_ratio",
                 hozAlign: "left",
@@ -66,25 +98,6 @@ class Draft extends React.Component {
                 widthGrow: 0.5,
                 headerFilter: "input",
                 headerFilterPlaceholder: "Min KD",
-                headerFilterFunc: ">="
-            },
-            {
-                title: "Ø Kills", field: "avg_kills", hozAlign: "left",
-                widthGrow: 1,
-                formatter: "progress",
-                formatterParams: {
-                    color: ["red", "orange", "yellow", "yellowgreen", "green"],
-                    min: stats ? stats.avg_kills.min * 0.9 : 0,
-                    max: stats ? stats.avg_kills.max : 100,
-                }
-            },
-            {
-                title: "Ø",
-                field: "avg_kills",
-                headerSort: false,
-                widthGrow: 0.5,
-                headerFilter: "input",
-                headerFilterPlaceholder: "Min Kills",
                 headerFilterFunc: ">="
             },
             {
@@ -142,6 +155,7 @@ class Draft extends React.Component {
                 skills_table.push({
                         img: `https://cdn.cloudflare.steamstatic.com/apps/dota2/images/abilities/${name}_md.png`,
                         name: s.name,
+                        win_rate_advantage: Number(s.win_rate_advantage).toFixed(2),
                         win_ratio: Number(s.win_ratio).toFixed(2),
                         kd_ratio: Number(s.kd_ratio).toFixed(2),
                         avg_kills: Number(s.avg_kills).toFixed(2),
@@ -162,7 +176,7 @@ class Draft extends React.Component {
             <GlobalContext.Consumer>
                 {ctx => (
                     <ReactTabulator
-                        columns={this.columns(ctx.context.data)}
+                        columns={this.columns(ctx.context.draft, ctx.context.data)}
                         data={this.resolve(ctx.context.draft)}
                         options={{
                             pagination: 'local',

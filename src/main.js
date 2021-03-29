@@ -184,7 +184,7 @@ app.on("activate", () => {
 
 ipcMain.on('analyseDraft', async (event, screenshot) => {
     dotadraftApi.uploadScreenshot(screenshot, data.current_version)
-        .then(filename => dotadraftApi.analyseScreenshot(filename, gameStateServer.gameState.playerTeam === "radiant", data.current_version))
+        .then(filename => dotadraftApi.analyseScreenshot(filename, gameStateServer.gameState, data.current_version))
         .then((res) => {
             event.reply("analyseDraftResult", res)
         })

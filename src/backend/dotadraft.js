@@ -65,9 +65,14 @@ class Dotadraft {
             })
     }
 
-    async analyseScreenshot(filename, teamRadiant, version) {
+    async analyseScreenshot(filename, gameState, version) {
         const url = `${this.server}/analyse`
-        const data = {filename: filename, team_radiant: teamRadiant, version: version}
+        const data = {
+            filename: filename,
+            team_radiant: gameState.playerTeam === "radiant",
+            hero_name: gameState.heroName.replace("npc_", "").replace("dota_hero_", ""),
+            version: version
+        }
         const config = {timeout: this.analyseTimeout}
 
         return axios.post(url, data, config)
