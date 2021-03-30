@@ -9,10 +9,6 @@ Helps you to pick skills in Dota 2 Ability Draft while drafting
 
 [How it works](https://www.youtube.com/watch?v=hCMO2ZYyIDU)
 
-**Exclusive Fullscreen and DX9 might cause issues**
-
-**If you encounter issues switch to DX11, Vulkan or OpenGL and use Borderless window or Desktop-friendly Fullscreen mode**
-
 Need help? Join [Discord](https://discord.gg/ZNPM4AV2gh)
 
 ![dotadraft screenshot](https://raw.githubusercontent.com/dotadraft/dotadraft_ui/master/images/screenshot.png "Dotadraft")
@@ -41,6 +37,11 @@ Try the following steps
 ### I do not see all available skills in the draft table
 
 Before refreshing the draft (default by pressing F5), make sure no pop ups are obstructing the available skills in the pool and the drafted skills for each hero.
+
+### After refreshing the skills I see an empty tabel
+
+Setting Dota 2 to exclusive fullscreen and DX9 might cause issues.
+If you encounter issues switch Dota 2 to DX11, Vulkan or OpenGL and use Borderless window or Desktop-friendly Fullscreen mode.
 
 ## Disclaimer
 
