@@ -1,6 +1,6 @@
 # Dotadraft
 
-- Skill stats of current draft (live)
+- Skill stats of current draft
 - AI predicted win rate advantage for the next skill pick (based on the heroes and already picked skills)
 - AI predicted team win rate 
 - Filter and sort skills by stats
