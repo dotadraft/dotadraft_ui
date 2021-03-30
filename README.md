@@ -44,7 +44,7 @@ If you encounter issues switch Dota 2 to DX11, Vulkan or OpenGL and use Borderle
 
 ## Disclaimer
 
-- Read the "about" in Dotadraft application
+- Read the "about" in the Dotadraft application
 - Use at own risk
 - There will be bugs
 - Dota 2 is a registered trademark of Valve Corporation
