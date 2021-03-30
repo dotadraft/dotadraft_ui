@@ -1,6 +1,7 @@
 import React from 'react';
 import GlobalContext from "../context/globalContext";
 import {ReactTabulator} from "react-tabulator";
+import {ProgressBar} from "react-bootstrap";
 
 class Draft extends React.Component {
     constructor(props) {
@@ -171,28 +172,35 @@ class Draft extends React.Component {
         return skills_table
     }
 
+    getWinRate(draft) {
+        return draft ? Math.floor(Number(draft.match_win_rate).toFixed(2) * 100) : 50
+    }
+
     render() {
         return (<>
             <GlobalContext.Consumer>
                 {ctx => (
-                    <ReactTabulator
-                        columns={this.columns(ctx.context.draft, ctx.context.data)}
-                        data={this.resolve(ctx.context.draft)}
-                        options={{
-                            pagination: 'local',
-                            paginationSize: 50,
-                            layoutColumnsOnNewData: true,
-                            virtualDom: false,
-                            persistence: {
-                                sort: true,
-                                filter: true,
-                            },
-                            persistenceMode: true,
-                            persistenceID: "draftTable"
-                        }}
-                        layout={"fitColumns"}
-                        className={"table-dark table-striped"}
-                    />
+                    <>
+                        <ProgressBar now={this.getWinRate(ctx.context.draft)} label={`${this.getWinRate(ctx.context.draft)}%`}/>
+                        <ReactTabulator
+                            columns={this.columns(ctx.context.draft, ctx.context.data)}
+                            data={this.resolve(ctx.context.draft)}
+                            options={{
+                                pagination: 'local',
+                                paginationSize: 50,
+                                layoutColumnsOnNewData: true,
+                                virtualDom: false,
+                                persistence: {
+                                    sort: true,
+                                    filter: true,
+                                },
+                                persistenceMode: true,
+                                persistenceID: "draftTable"
+                            }}
+                            layout={"fitColumns"}
+                            className={"table-dark table-striped"}
+                        />
+                    </>
                 )}
             </GlobalContext.Consumer>
         </>)

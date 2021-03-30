@@ -1,6 +1,6 @@
 {
   "name": "dotadraft",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "",
   "author": {
     "name": "Sascha Lippert",
@@ -33,6 +33,7 @@
       "build/**/*",
       "assets/**/*",
       "src/window/index.html",
+      "src/window/splash.html",
       "src/backend/*",
       "src/main.js",
       "src/preload.js"
