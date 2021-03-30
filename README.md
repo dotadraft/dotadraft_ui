@@ -42,6 +42,30 @@ Before refreshing the draft (default by pressing F5), make sure no skill/hero in
 Setting Dota 2 to exclusive fullscreen and DX9 might cause issues.
 If you encounter issues switch Dota 2 to DX11, Vulkan or OpenGL and use Borderless window or Desktop-friendly Fullscreen mode.
 
+### Supported resolutions
+
+-1920_1440
+-1600_1200
+-1280_960
+-1152_864
+-1024_768
+-800_600
+-640_480
+-2560_1440
+-1920_1080
+-1600_900
+-1366_768
+-1280_720
+-1920_1200
+-1680_1050
+-1440_900
+-1280_800
+-3440_1440
+-2560_1080
+-1280_1024
+-1440_960
+-720_480
+
 ## Disclaimer
 
 - Read the "about" in the Dotadraft application
