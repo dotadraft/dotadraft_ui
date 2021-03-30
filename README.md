@@ -28,6 +28,16 @@ Need help? Join [Discord](https://discord.gg/ZNPM4AV2gh)
 7. Press focus hotkey (default F6) to hide and show the window
 8. Profit
 
+## FAQ
+
+### The app is not starting, what can I do?
+
+Try the following steps
+
+1. Quit the app (icon in systray - quit)
+2. Delete C:\Users\<your_user>\AppData\Roaming\dotadraft
+3. Restart the app
+
 ## Disclaimer
 
 - Read about in Dotadraft application
