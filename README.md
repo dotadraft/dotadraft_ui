@@ -19,7 +19,7 @@ Need help? Join [Discord](https://discord.gg/ZNPM4AV2gh)
 3. Run dotadraft
 4. Configure Dota 2 folder in settings for game state updates
 5. Play Dota 2 Ability Draft
-6. Press refresh skill hotkey (default F5) while drafting to show analysis (takes max 30 seconds)
+6. Press refresh skill hotkey (default F5) while drafting to show analysis (takes max 30 seconds - move mouse, so no dota info boxes are overlapping skills/heroes)
 7. Press focus hotkey (default F6) to hide and show the window
 8. Profit
 
