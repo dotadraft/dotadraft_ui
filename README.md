@@ -38,6 +38,10 @@ Try the following steps
 2. Delete C:\Users\<your_user>\AppData\Roaming\dotadraft
 3. Restart the app
 
+### I do not see all available skills in the draft table
+
+Before refreshing the draft (default by pressing F5), make sure no pop ups are obstructing the available skills in the pool and the drafted skills for each hero.
+
 ## Disclaimer
 
 - Read about in Dotadraft application
