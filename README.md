@@ -38,7 +38,7 @@ Try the following steps
 
 Before refreshing the draft (default by pressing F5), make sure no pop ups are obstructing the available skills in the pool and the drafted skills for each hero.
 
-### After refreshing the skills I see an empty tabel
+### After refreshing the skills I see an empty draft tabel
 
 Setting Dota 2 to exclusive fullscreen and DX9 might cause issues.
 If you encounter issues switch Dota 2 to DX11, Vulkan or OpenGL and use Borderless window or Desktop-friendly Fullscreen mode.
