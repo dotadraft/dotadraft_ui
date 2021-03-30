@@ -33,7 +33,7 @@ Try the following steps
 
 ### I do not see all available skills in the draft table
 
-Before refreshing the draft (default by pressing F5), make sure no pop ups are obstructing the available skills in the pool and the drafted skills for each hero.
+Before refreshing the draft (default by pressing F5), make sure no skill/hero info boxes are obstructing the available skills in the pool and the drafted skills for each hero.
 
 ### After refreshing the skills I see an empty draft tabel
 
