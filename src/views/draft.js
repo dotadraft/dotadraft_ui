@@ -173,7 +173,7 @@ class Draft extends React.Component {
     }
 
     getWinRate(draft) {
-        return draft ? Math.floor(Number(draft.match_win_rate).toFixed(2) * 100) : 50
+        return draft ? Math.floor(Number(draft.match_win_rate) * 100) : 50
     }
 
     render() {

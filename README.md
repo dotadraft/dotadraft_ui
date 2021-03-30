@@ -1,4 +1,4 @@
-# Dotadraft
+# ![dotadraft logo](https://raw.githubusercontent.com/dotadraft/dotadraft_ui/master/assets/logo.png "Dotadraft")
 
 - Skill stats for current draft
 - AI predicted win rate advantage for the next skill pick (based on the heroes and already picked skills)
@@ -9,8 +9,6 @@
 [How it works](https://www.youtube.com/watch?v=hCMO2ZYyIDU)
 
 Need help? Join [Discord](https://discord.gg/ZNPM4AV2gh)
-
-![dotadraft screenshot](https://raw.githubusercontent.com/dotadraft/dotadraft_ui/master/images/screenshot.png "Dotadraft")
 
 ## How to use
 
