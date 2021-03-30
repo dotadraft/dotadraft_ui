@@ -26,7 +26,7 @@ Need help? Join [Discord](https://discord.gg/ZNPM4AV2gh)
 
 ## FAQ
 
-### The app is not starting correcrly
+### The app is not starting correctly
 
 Try the following steps
 
