@@ -10,6 +10,8 @@
 
 Need help? Join [Discord](https://discord.gg/ZNPM4AV2gh)
 
+![dotadraft screenshot](https://raw.githubusercontent.com/dotadraft/dotadraft_ui/master/images/screenshot.png "Dotadraft")
+
 ## How to use
 
 1. [Download latest release for your OS](https://github.com/dotadraft/dotadraft_ui/releases)
