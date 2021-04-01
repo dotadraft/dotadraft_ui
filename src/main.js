@@ -116,41 +116,46 @@ app.on('ready', async () => {
             log.error("Error loading data", "Check internet connection")
             app.quit()
         })
+        .then(() => {
+            createMainWindow()
+            win.once('ready-to-show', () => {
+                setTimeout(() => {
+                    splash.destroy();
+                    win.show()
 
-    createMainWindow()
-    win.once('ready-to-show', () => {
-        setTimeout(() => {
-            splash.destroy();
-            win.show()
+                    win.webContents.on('new-window', function (e, url) {
+                        e.preventDefault();
+                        require('electron').shell.openExternal(url);
+                    });
 
-            win.webContents.on('new-window', function (e, url) {
-                e.preventDefault();
-                require('electron').shell.openExternal(url);
-            });
+                    if (data.current_version !== data.latest_version) {
+                        dialog.showMessageBox(win, {
+                            title: `New Version`,
+                            message: `New Version ${data.latest_version} available on GitHub`
+                        })
+                    }
 
-            if (data.current_version !== data.latest_version) {
-                dialog.showMessageBox(win, {
-                    title: `New Version`,
-                    message: `New Version ${data.latest_version} available on GitHub`
-                })
-            }
+                    globalShortcut.register(settings.hotkey_focus_toggle, () => {
+                        if (win.isVisible()) {
+                            win.hide();
+                        } else {
+                            win.show();
+                            win.focus()
+                        }
+                    })
 
-            globalShortcut.register(settings.hotkey_focus_toggle, () => {
-                if (win.isVisible()) {
-                    win.hide();
-                } else {
-                    win.show();
-                    win.focus()
-                }
+                    globalShortcut.register(settings.hotkey_draft_refresh, () => {
+                        if (gameStateServer.gameState) {
+                            win.webContents.send("refreshSkills");
+                        }
+                    })
+                }, 3000)
             })
-
-            globalShortcut.register(settings.hotkey_draft_refresh, () => {
-                if (gameStateServer.gameState) {
-                    win.webContents.send("refreshSkills");
-                }
-            })
-        }, 3000)
-    })
+        })
+        .catch(e => {
+            log.error("Error creating main window", e)
+            app.quit()
+        })
 })
 
 if (isDev) {
