@@ -42,6 +42,13 @@ Before refreshing the draft (default by pressing F5), make sure no skill/hero in
 Setting Dota 2 to exclusive fullscreen and DX9 might cause issues.
 If you encounter issues switch Dota 2 to DX11, Vulkan or OpenGL and use Borderless window or Desktop-friendly Fullscreen mode.
 
+### Any other issues
+
+- Please start the tool with the "--enable-logging" argument (without ")
+- Submit logs and a short error description
+  - Either as github issue
+  - Or on discord 
+
 ### Supported resolutions
 
 - 1920_1440
