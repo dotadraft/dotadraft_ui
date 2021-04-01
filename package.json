@@ -67,6 +67,7 @@
       ]
     },
     "linux": {
+      "icon": "assets/icon_512.png",
       "target": [
         "tar.gz",
         "AppImage"
