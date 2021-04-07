@@ -62,6 +62,16 @@ $link-hover-color: $red;
   display: inline-block;
 }
 
+$enable-rounded: false;
+
+.progress-bar {
+  height: 32px !important;
+}
+
+.progress {
+  height: 32px !important;
+}
+
 @import "./node_modules/bootstrap/scss/bootstrap";
 @import "./node_modules/react-tabulator/lib/styles";
 @import "./node_modules/react-tabulator/css/bootstrap/tabulator_bootstrap4";

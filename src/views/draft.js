@@ -1,7 +1,7 @@
 import React from 'react';
 import GlobalContext from "../context/globalContext";
 import {ReactTabulator} from "react-tabulator";
-import {ProgressBar} from "react-bootstrap";
+import {Alert, ProgressBar} from "react-bootstrap";
 
 class Draft extends React.Component {
     constructor(props) {
@@ -16,14 +16,23 @@ class Draft extends React.Component {
         let min_adv = -1
         let max_adv = 1
 
+        let min_est = -1
+        let max_est = 1
+
         if (draft) {
             const list_adv = []
+            const list_est = []
+
             for (const [key, s] of Object.entries(draft.abilities)) {
                 list_adv.push(Number(s.win_rate_advantage).toFixed(2))
+                list_est.push(Number(s.win_rate_estimated).toFixed(2))
             }
 
             min_adv = Math.min.apply(null, list_adv) - 0.01
             max_adv = Math.max.apply(null, list_adv) + 0.01
+
+            min_est = Math.min.apply(null, list_est) - 0.01
+            max_est = Math.max.apply(null, list_est) + 0.01
         }
 
         const stats = data.stats_skills
@@ -57,6 +66,27 @@ class Draft extends React.Component {
                 widthGrow: 0.5,
                 headerFilter: "input",
                 headerFilterPlaceholder: "Min Win",
+                headerFilterFunc: ">="
+            },
+            {
+                title: "Estimated",
+                field: "win_rate_estimated",
+                hozAlign: "left",
+                widthGrow: 1,
+                formatter: "progress",
+                formatterParams: {
+                    color: ["red", "orange", "yellow", "yellowgreen", "green"],
+                    min: min_est,
+                    max: max_est
+                }
+            },
+            {
+                title: "%",
+                field: "win_rate_estimated",
+                headerSort: false,
+                widthGrow: 0.5,
+                headerFilter: "input",
+                headerFilterPlaceholder: "Min Est",
                 headerFilterFunc: ">="
             },
             {
@@ -102,25 +132,6 @@ class Draft extends React.Component {
                 headerFilterFunc: ">="
             },
             {
-                title: "Ø GPM", field: "avg_gpm", hozAlign: "left",
-                widthGrow: 1,
-                formatter: "progress",
-                formatterParams: {
-                    color: ["red", "orange", "yellow", "yellowgreen", "green"],
-                    min: stats ? stats.avg_gpm.min * 0.9 : 0,
-                    max: stats ? stats.avg_gpm.max : 100,
-                }
-            },
-            {
-                title: "Ø",
-                field: "avg_gpm",
-                headerSort: false,
-                widthGrow: 0.5,
-                headerFilter: "input",
-                headerFilterPlaceholder: "Min GPM",
-                headerFilterFunc: ">="
-            },
-            {
                 title: "Scepter",
                 field: "has_scepter",
                 hozAlign: "center",
@@ -157,6 +168,7 @@ class Draft extends React.Component {
                         img: `https://cdn.cloudflare.steamstatic.com/apps/dota2/images/abilities/${name}_md.png`,
                         name: s.name,
                         win_rate_advantage: Number(s.win_rate_advantage).toFixed(2),
+                        win_rate_estimated: Number(s.win_rate_estimated).toFixed(2),
                         win_ratio: Number(s.win_ratio).toFixed(2),
                         kd_ratio: Number(s.kd_ratio).toFixed(2),
                         avg_kills: Number(s.avg_kills).toFixed(2),
@@ -176,11 +188,24 @@ class Draft extends React.Component {
         return draft ? Math.floor(Number(draft.match_win_rate) * 100) : 50
     }
 
+    getAlerts(draft) {
+        if (draft && draft.messages) {
+            return draft.messages.map((msg, idx) => (
+                <Alert key={idx} variant={msg.level}>
+                    {msg.text}
+                </Alert>
+            ))
+        }
+
+        return null
+    }
+
     render() {
         return (<>
             <GlobalContext.Consumer>
                 {ctx => (
                     <>
+                        {this.getAlerts(ctx.context.draft)}
                         <ProgressBar now={this.getWinRate(ctx.context.draft)} label={`${this.getWinRate(ctx.context.draft)}%`}/>
                         <ReactTabulator
                             columns={this.columns(ctx.context.draft, ctx.context.data)}
@@ -205,6 +230,7 @@ class Draft extends React.Component {
             </GlobalContext.Consumer>
         </>)
     }
+
 }
 
 export default Draft
